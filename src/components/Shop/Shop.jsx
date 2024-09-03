@@ -26,7 +26,7 @@ const Shop = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:4000/products?page=${currentPage}&size=${itemsPerPage}`)   // query parameter
+        fetch(`http://localhost:4000/products?page=${currentPage}&size=${itemsPerPage}`)   // query parameter: load data by filter
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [currentPage,itemsPerPage]);
@@ -57,7 +57,7 @@ const Shop = () => {
         // const newCart = [...cart, product];
         // if product doesn't exist in the cart, then set quantity = 1
         // if exist update quantity by 1
-        const exists = cart.find(pd => pd._id === product._id);
+        const exists = cart.find(pd => pd._id === product._id);  // find that object
         if (!exists) {
             product.quantity = 1;
             newCart = [...cart, product]
